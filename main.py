@@ -50,3 +50,11 @@ freqs = np.arrange(0, fsample/2, fsample/N)
 
 red_fft = red_fft[0:len(freqs)]
 
+max_val = 0
+max_index = 0
+for index, fft_val in enumerate(red_fft):
+    if fft_val > max_val:
+        max_index = index
+
+heartrate = freqs[max_index] *60
+print(heartrate)
