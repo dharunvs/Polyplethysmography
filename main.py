@@ -3,7 +3,7 @@ import numpy as np
 import imageio
 import matplotlib.pyplot as pt
 
-fn = 'test'
+fn = 'buji'
 videofile = f"test/{fn}.mp4"
 
 fps = 30
@@ -64,4 +64,4 @@ for index, fft_val in enumerate(red_fft):
         max_index = index
 
 heartrate = freqs[max_index] *60
-print(heartrate/10)
+print(fn, heartrate/10)
