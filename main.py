@@ -21,8 +21,15 @@ colors = {
     'blue': [],
 }
 
+for frame in video:
+    lumped_pixel = np.mean(frame, axis=(0,1))
+    colors['red'].append(lumped_pixel[0])
+    colors['green'].append(lumped_pixel[1])
+    colors['blue'].append(lumped_pixel[2])
+
 for key in colors:
     colors[key] = np.divide(colors[key], 255)
+    # print(colors[key])
 
 x = np.arange(len(colors['red'])) / fps
 
@@ -41,7 +48,7 @@ for i, j in enumerate(colors['red']):
         colors['red_filt'] = np.append(colors['red_filt'], alpha*(y_prev + x_curr - x_prev))
 
 x_filt = x[50:-1]
-colors['red_filt'] - colors['red_filt'][50:-1]
+colors['red_filt'] = colors['red_filt'][50:-1]
 
 
 red_fft = np.absolute(np.fft.fft(colors['red_filt']))
@@ -57,4 +64,4 @@ for index, fft_val in enumerate(red_fft):
         max_index = index
 
 heartrate = freqs[max_index] *60
-print(heartrate)
+print(heartrate/10)
