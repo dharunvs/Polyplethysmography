@@ -4,7 +4,7 @@ import imageio
 import matplotlib.pyplot as pt
 
 fn = 'test'
-videofile = f"{os.getcwd}/{fn}.mp4"
+videofile = f"test/{fn}.mp4"
 
 fps = 30
 PLOT = True
@@ -13,7 +13,7 @@ SAVE = True
 pt.style.use("fivethirtyeight")
 
 
-video = imageio.get_reader(videofile, 'vid')
+video = imageio.get_reader(videofile, 'ffmpeg')
 
 colors = {
     'red': [],
@@ -24,9 +24,9 @@ colors = {
 for key in colors:
     colors[key] = np.divide(colors[key], 255)
 
-x = np.arrange(len(colors['red'])) / fps
+x = np.arange(len(colors['red'])) / fps
 
-colors['red_filt'] = []
+colors['red_filt'] = list()
 colors['red_filt'] = np.append(colors['red_filt'], colors['red'][0])
 
 tau= 0.25
@@ -46,7 +46,7 @@ colors['red_filt'] - colors['red_filt'][50:-1]
 
 red_fft = np.absolute(np.fft.fft(colors['red_filt']))
 N = len(colors['red_filt'])
-freqs = np.arrange(0, fsample/2, fsample/N)
+freqs = np.arange(0, fsample/2, fsample/N)
 
 red_fft = red_fft[0:len(freqs)]
 
