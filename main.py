@@ -15,7 +15,8 @@ class App:
         self.width = 500
         self.height = 500
 
-        self.file_path = ""
+        self.file_path_element = None
+        self.file_path = "No file selected"
 
 
     def run(self):
@@ -37,11 +38,12 @@ class App:
 # ----------------------------------------------------------------------------------------------------------------------
 
     def get_file(self):
-        self.file_path = filedialog.askopenfile(initialdir="/")
+        self.file_path_element = filedialog.askopenfile(initialdir="/")
+        self.file_path = self.file_path_element.name
+
 
     def print_command(self):
-        for i in self.file_path:
-            print(i)
+        print(self.file_path)
 
 
 # ----------------------------------------------------------------------------------------------------------------------
