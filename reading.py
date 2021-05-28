@@ -4,9 +4,9 @@ import imageio
 import matplotlib.pyplot as pt
 
 
-def value(filename, fps, name):
+def value(filename, fps):
     fn = filename
-    videofile = f"test/{fn}.mp4"
+    videofile = fn
 
     fps = fps
     PLOT = True
